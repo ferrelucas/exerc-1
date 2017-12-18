@@ -1,0 +1,37 @@
+<style type="text/css">
+	.vermelho{
+		background-color: red;
+	}
+	.verde{
+		background-color: green;
+	}
+</style>
+<span class="placares">5/7</span>
+ <span class="placares">5/7</span>
+ <span class="placares">3/6</span>
+ <span class="placares">6/4</span>
+ <span class="placares">6/3</span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var spans = $(".placares");
+	spans.each(function(i, val) {
+		var valores = getValores(val.textContent);
+		if(valores.primeiroNumero > valores.segundoNumero) {
+			$(val).removeAttr('').addClass('badge badge-warning');
+			return
+		}
+		if(valores.primeiroNumero < valores.segundoNumero) {
+			$(val).removeAttr('').addClass('badge badge-warning');
+			return
+		}
+	})
+
+	function getValores(texto) {
+		var split = texto.split('/');
+		return {
+			primeiroNumero: parseInt(split[0], 10),
+			segundoNumero: parseInt(split[1], 10)
+		};
+	}
+</script>
